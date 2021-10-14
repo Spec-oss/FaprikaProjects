@@ -16,8 +16,8 @@ namespace DataAccess.Concrete.EntityFramework
         {
             using(FaprikaProjectContext context=new FaprikaProjectContext())
             {
-                var result = from p in context.Products
-                             join c in context.Categories
+                var result = from p in context.Product
+                             join c in context.Category
                              on p.CategoryId equals c.CategoryId
                              select new ProductDetailDto { ProductName = p.ProductName, CategoryName = c.CategoryName, Price = p.Price, StockQuantity = p.StockQuantity };
                 return result.ToList();
