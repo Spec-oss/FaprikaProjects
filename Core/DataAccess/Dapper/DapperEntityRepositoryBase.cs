@@ -12,6 +12,7 @@ namespace Core.DataAccess.Dapper
 {
     public class DapperEntityRepositoryBase<TEntity, TContext> : IEntityRepository<TEntity>
         where TEntity : class, IEntity, new()
+        where TContext:  new()
     {
         public void Add(TEntity entity)
         {
