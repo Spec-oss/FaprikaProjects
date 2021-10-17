@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Bussiness.Abstract;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using ProjectUI.Models;
 using System;
@@ -11,6 +12,11 @@ namespace ProjectUI.Controllers
 {
     public class HomeController : Controller
     {
+        IProductService _productService;
+        public HomeController(IProductService productService)
+        {
+            _productService = productService;
+        }
         private readonly ILogger<HomeController> _logger;
 
         public HomeController(ILogger<HomeController> logger)
