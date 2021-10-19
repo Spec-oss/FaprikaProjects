@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Bussiness.Abstract;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using ProjectUI.Models;
 using System;
@@ -11,16 +12,21 @@ namespace ProjectUI.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        private readonly ILogger<HomeController> _logger;
+        private readonly IProductService _productService;
+        private readonly ICategoryService _categoryService;
+        public HomeController(IProductService productService, ICategoryService categoryService)
         {
-            _logger = logger;
+            _productService = productService;
+            _categoryService = categoryService;
         }
 
         public IActionResult Index()
         {
-            return View();
+            var model = _productService.GetProductDetails();
+
+            return View(model.Data);
         }
 
         public IActionResult Privacy()
