@@ -1,0 +1,28 @@
+﻿@{
+    ViewData["Title"] = "Categories";
+}
+@using Core.Entity
+@using Entities.Concrete
+@model List<Category>
+
+<div class="card-header py-3">
+    <h6 class="m-0 font-weight-bold text-primary">Category Details</h6>
+</div>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            @foreach (var item in Model)
+            {
+                <li class="nav-item">
+                    <a class="nav-link" href="/Categories/CategoryDetails/@item.CategoryId">@item.CategoryName</a>
+                </li>
+            }
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+    </div>
+</nav>
